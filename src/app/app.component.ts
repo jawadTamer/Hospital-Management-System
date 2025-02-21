@@ -1,16 +1,15 @@
+
 import { Component } from '@angular/core';
-import { environment } from '../environments/environment';
+import { RouterOutlet } from '@angular/router';
+import { SidebarComponent } from "./component/dashboard/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports: [RouterOutlet, SidebarComponent]
 })
 export class AppComponent {
   title = 'Hospital-Management-System';
-  apiUrl = environment.apiUrl;
-
-  constructor() {
-    console.log('API URL:', this.apiUrl);
-  }
 }
