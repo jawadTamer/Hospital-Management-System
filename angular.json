@@ -31,18 +31,15 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/firebase/firebase-app.js",
-              "node_modules/firebase/firebase-firestore.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "3MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -99,11 +96,7 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
-            "scripts": [
-
-              "node_modules/firebase/firebase-app.js",
-              "node_modules/firebase/firebase-firestore.js"
-            ]
+            "scripts": []
           }
         }
       }

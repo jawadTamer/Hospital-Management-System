@@ -1,52 +1,30 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Injectable, inject } from '@angular/core';
+import { Firestore, collection, addDoc, doc, updateDoc, deleteDoc, getDoc, collectionData } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  private firestore = inject(Firestore); // ✅ Use `inject()` for standalone API
 
-  constructor(private afs : AngularFirestore) { }
-
-  addDoctor(doctor : any) {
-    doctor.id = this.afs.createId();
-    return this.afs.collection("Doctor/").add(doctor);
+  async addDoctor(doctor: any) {
+    doctor.id = doc(collection(this.firestore, "Doctor")).id; // ✅ Generate ID
+    return addDoc(collection(this.firestore, "Doctor"), doctor);
   }
 
   getAllDoctors() {
-    return this.afs.collection("Doctor/").snapshotChanges();
+    return collectionData(collection(this.firestore, "Doctor"), { idField: 'id' }); // ✅ Fetch with IDs
   }
 
-  updateDoctor(doctor : any) {
-    return this.afs.doc("Doctor/"+doctor.id).update(doctor);
+  updateDoctor(doctor: any) {
+    return updateDoc(doc(this.firestore, "Doctor", doctor.id), doctor);
   }
 
-  deleteDoctor(id : string) {
-    return this.afs.doc("Doctor/"+id).delete();
+  deleteDoctor(id: string) {
+    return deleteDoc(doc(this.firestore, "Doctor", id));
   }
 
-  getDoctorById(id : any) {
-    return this.afs.doc("Doctor/"+id).valueChanges();
-  }
-
-  addPatient(patient : any) {
-    patient.patient_id = this.afs.createId();
-    return this.afs.collection("Patient/").add(patient);
-  }
-
-  getAllPatients() {
-    return this.afs.collection("Patient/").snapshotChanges();
-  }
-
-  updatePatient(patient : any) {
-    return this.afs.doc("Patient/"+patient.patient_id).update(patient);
-  }
-
-  deletePatient(id : string) {
-    return this.afs.doc("Patient/"+id).delete();
-  }
-
-  getPatientById(id : any) {
-    return this.afs.doc("Patient/"+id).valueChanges();
+  getDoctorById(id: any) {
+    return getDoc(doc(this.firestore, "Doctor", id));
   }
 }

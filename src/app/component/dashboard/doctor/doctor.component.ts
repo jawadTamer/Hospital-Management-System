@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -40,14 +40,22 @@ export class DoctorComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(
-    public dialog: MatDialog,
-    private dataApi: DataService,
-    private _snackBar: MatSnackBar
-  ) { }
+  private dataApi = inject(DataService);
+  private _snackBar = inject(MatSnackBar);
+
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // this.getAllDoctors();
+    this.getAllDoctors();
+  }
+
+  getAllDoctors() {
+    this.dataApi.getAllDoctors().subscribe((data: any) => {
+      this.doctorsArr = data;
+      this.dataSource = new MatTableDataSource(this.doctorsArr);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 
   addDoctor() {
