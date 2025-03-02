@@ -119,5 +119,5 @@
 
 <div mat-dialog-actions>
   <button mat-raised-button mat-dialog-close (click)="cancelRegistration()">Cancel</button>
-  <button mat-raised-button color="primary" mat-dialog-close (click)="registerDoctor()" [disabled]="form.invalid"> {{buttonName}} </button>
+  <button mat-raised-button color="primary" mat-dialog-close (click)="registerDoctor()" [disabled]="form.invalid || !form.dirty"> {{buttonName}} </button>
 </div>

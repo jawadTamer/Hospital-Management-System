@@ -5,15 +5,16 @@ import { Firestore, collection, addDoc, doc, updateDoc, deleteDoc, getDoc, colle
   providedIn: 'root'
 })
 export class DataService {
-  private firestore = inject(Firestore); // ✅ Use `inject()` for standalone API
+  private firestore = inject(Firestore); 
 
   async addDoctor(doctor: any) {
-    doctor.id = doc(collection(this.firestore, "Doctor")).id; // ✅ Generate ID
+    doctor.id = doc(collection(this.firestore, "Doctor")).id; 
     return addDoc(collection(this.firestore, "Doctor"), doctor);
   }
 
   getAllDoctors() {
-    return collectionData(collection(this.firestore, "Doctor"), { idField: 'id' }); // ✅ Fetch with IDs
+    return collectionData(collection(this.firestore, "Doctor"), { idField: 'id' }); 
+
   }
 
   updateDoctor(doctor: any) {
@@ -25,6 +26,6 @@ export class DataService {
   }
 
   getDoctorById(id: any) {
-    return getDoc(doc(this.firestore, "Doctor", id));
+    return getDoc(doc(this.firestore, "Doctor", id)).then(docSnap => docSnap.data());
   }
 }

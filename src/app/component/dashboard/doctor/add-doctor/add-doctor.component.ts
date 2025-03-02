@@ -49,8 +49,8 @@ export class AddDoctorComponent {
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<AddDoctorComponent>
-) {
-    this.title = data.title; 
+){
+     this.title = data.title; 
     this.title = data.title;
     this.id = data.id;
     this.name = data.name;

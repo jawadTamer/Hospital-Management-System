@@ -1,8 +1,18 @@
-mat-card-content {
-    color: #3f51b5;
+mat-card-content,h2 {
+    color: #3f51b5 !important; 
+    
   }
   
-  mat-card :hover {
+  mat-card  :hover {
   
     transform: scale(1.03);
+    cursor: pointer;
+  }
+  table {
+    width: 100%;
+  }
+  
+  mat-form-field {
+    font-size: 14px;
+    width: 100%;
   }
