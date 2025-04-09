@@ -1,0 +1,40 @@
+::ng-deep .mdc-dialog__container {
+    overflow: hidden !important;
+  }
+  
+  ::ng-deep .mdc-dialog__surface {
+    overflow: hidden !important;
+  }
+  
+  mat-dialog-content {
+    width: 600px;
+    padding: 20px;
+    height: auto !important;
+    max-height: none !important;
+    overflow: hidden !important;
+  }
+  
+  ::ng-deep .mat-mdc-dialog-content {
+    overflow: hidden !important;
+    max-height: none !important;
+    display: block !important;
+  }
+  
+  mat-grid-list {
+    overflow: hidden;
+    margin: 0;
+  }
+  
+  mat-radio-button {
+    margin-right: 15px;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 0 !important;
+    display: none !important;
+  }
+  
+  * {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }

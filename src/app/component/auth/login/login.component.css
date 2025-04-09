@@ -1,0 +1,17 @@
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+}
+
+mat-form-field {
+  width: 100%;
+}
