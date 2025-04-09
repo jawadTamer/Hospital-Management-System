@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/hospital-management-system/browser"
+  publish = "dist/hospital-management-system/browser/browser"
   command = "npm run build:prod"
 
 [[redirects]]
