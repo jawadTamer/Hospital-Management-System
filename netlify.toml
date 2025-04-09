@@ -1,6 +1,6 @@
 [build]
-  publish = "dist/hospital-management-system"
-  command = "ng build"
+  publish = "dist/hospital-management-system/browser"
+  command = "npm run build:prod"
 
 [[redirects]]
   from = "/*"
